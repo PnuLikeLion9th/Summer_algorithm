@@ -1,5 +1,6 @@
 # 백준_15657_N과 M (8)_백트래킹_실버 3
-# 실패, dfs로 풀이
+# 첫번째 시도, itertools 사용하여 중복순열 구해서 풀이진행 ==> 메모리 초과
+# 두번째 시도, dfs로 풀이
 
 def dfs(depth, index, n, m):
     if depth == m:
