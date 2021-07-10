@@ -1,5 +1,5 @@
 def solution(s):
-    word=s.split() #word=['hello', 'hello', 'world']
+    word=s.split(' ') #word=['hello', 'hello', 'world']
     #print(word) 
     #word[0]='first' #word[0]인자 바꿀수 있는지 실험
     #print(word)
