@@ -22,4 +22,4 @@ def solution(s):
         newword=''                      #newword를 초기화 해준다.
         #print(newwordlist)
     answer=(' '.join(newwordlist))
-    return answers
+    return answer
