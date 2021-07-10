@@ -6,4 +6,3 @@ def solution(land):
         land[1+i][2] += max(land[i][0],land[i][1],land[i][3])
         land[1+i][3] += max(land[i][0],land[i][1],land[i][2])
     return max(land[len(land)-1])
-    
