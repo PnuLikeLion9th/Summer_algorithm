@@ -1,7 +1,8 @@
 def check_man(p, r, c, _r, _c):
-    man_dist = abs(r - _r) + abs((c + _c))
+    man_dist = abs(r - _r) + abs((c - _c))
     if (man_dist > 2) or (man_dist == 0):
-        pass
+        print('2 or 0')
+        return True
     elif man_dist ==1:
         return False
     elif man_dist == 2: # 거리가 2일 때.
@@ -9,14 +10,14 @@ def check_man(p, r, c, _r, _c):
         if (r == _r) or (c == _c) :
             if (c < _c) and (p[r][c + 1] == "O") or (c > _c) and (p[r][c - 1] == "O"):
                 # return True
-                pass
+                return True
             else:
                 return False
         # 대각선인 경우
         else:
             if (p[r][_c] == "O") and (p[_r][c] == "O"):
                 # return True
-                pass
+                return True
             else:
                 return False
 
@@ -33,6 +34,8 @@ def checkExistP(p, r, c):
     for i in dic[r]:
         for j in dic[c]:
             if not check_man(p, r, c, i, j):
+
+                print(r, c, i, j)
                 return False
     return True
 
@@ -41,9 +44,9 @@ def check(p):
     # p 가 나오면, 그 녀석을 기준으로 맨해튼 거리가 2 이하에 다른 p 가있는지 확인한다 => 못지키면 바로 break, false
     for row in range(5):
         for col in range(5):
-            # print(row, col)
             if p[row][col] == 'P':
                 if not checkExistP(p, row, col):
+                    print(row, col)
                     return False
             else:
                 pass
@@ -69,10 +72,14 @@ def solution(places):
     return answer
 
 
+
 places = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"],
-          ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
-          ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"],
-          ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
-          ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]
+          # ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
+          # ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"],
+          # ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
+          # ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]
+          ]
 
 print(solution(places))
+
+
