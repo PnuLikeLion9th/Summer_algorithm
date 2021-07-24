@@ -1,22 +1,13 @@
 from collections import deque
-
-# 한글자만 다른지 확인
+# queue를 위함
 
 
 def check(s, begin):
-    check = 0
     answer = 0
     for i in range(len(s)):
-        if list(s)[i] not in list(begin):
-
-            answer = i
-            check += 1
-        if check > 1:
-            return -1
-    if check == 1:
-        return answer
-    else:
-        return -1
+        if list(s)[i] != list(begin)[i]:
+            answer += 1
+    return True if answer == 1 else False
 
 
 def solution(begin, target, words):
@@ -24,28 +15,20 @@ def solution(begin, target, words):
         return 0
 
     queue = deque()
-
-    for e in words:
-        i = check(e, begin)
-        if i != -1:
-            temp = list(begin)
-            temp[i] = list(e)[i]
-            queue.append([''.join(temp), [e]])
+    queue.append([begin, []])
 
     while queue:
-        w, location = queue.popleft()
-        for e in words:
-            if e not in location:
-                i = check(e, w)
-                if i != -1:
-                    temp = list(w)
-                    temp[i] = list(e)[i]
-                    location.append(e)
-                    queue.append([''.join(temp), location])
-                    if target == w:
-                        return len(location)
+        n, l = queue.popleft()
+        for word in words:
+            if word not in l and check(word, n):
+                if word == target:
+                    return len(l) + 1
+                temp = l[0:]
+                temp.append(word)
+                queue.append([word, temp])
 
     return 0
 
 
-print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+print(solution("hit", "cog", ["hot", "dot",
+      "dog",  "log", "cot", "lot", "cog"]))
