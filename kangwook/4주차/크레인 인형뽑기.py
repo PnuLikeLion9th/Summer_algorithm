@@ -1,25 +1,20 @@
 def solution(board, moves):
     N=len(board)    #NxN board
-    cab=[]          #담을 바구니
-    k=0
+    cab=[-1]          #담을 바구니
     answer=0
     for i in moves:     #moves 하나씩 꺼내서 실행. i=int값
-        for j in range(0,N+1):
+        for j in range(N):
             pa=board[j]
-            if pa[i] == 0:
-                pass
-            else:
-                cab.append(pa[i])
-                j.replace(pa[i],0)
-                break
-        k+=1
-        if k>=2:
-            if cab[k-2] == cab[k-1]:
-                answer+=1
-                cab.remove(cab[k-2])
-                cab.remove(cab[k-1])
-        else:
-            pass
+            if pa[i-1] != 0:
+                if pa[i-1]!=cab[-1]:
+                    cab.append(pa[i-1])
+                    pa[i-1]=0
+                    break
+                elif pa[i-1]==pa[-1]:
+                    pa[i-1]=0
+                    cab.pop()
+                    answer+=2
+                    break
         return answer
 
 
