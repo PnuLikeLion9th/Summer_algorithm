@@ -26,7 +26,6 @@ def solution(participant, completion):
     comple = dict()
     for name in completion:
         comple[name] = comple.get(name, 0) + 1
-    print(comple)
     for name in participant:
         if name not in comple:
             return name
@@ -35,10 +34,25 @@ def solution(participant, completion):
             return name
 
 
-# participant = ["mislav", "stanko", "mislav", "ana"]
-# completion = ["stanko", "ana", "mislav"]
+def solution(participant, completion):
+    # 아니 최대 N 10만따리를 sort() 치는데도, 시간효율성 안터지네; O(NlogN)이라 그런가봄
+    participant.sort()
+    completion.sort()
+    for parti, compl in zip(participant, completion):
+        if parti != compl:
+            return parti
 
-participant =["marina", "josipa", "nikola", "vinko", "filipa"]
-completion = ["josipa", "filipa", "marina", "nikola"]
+
+import collections
+
+
+def solution(participant, completion):
+    return list(collections.Counter(participant) - collections.Counter(completion))[0]
+
+
+participant = ["mislav", "stanko", "mislav", "ana"]
+completion = ["stanko", "ana", "mislav"]
+# participant =["marina", "josipa", "nikola", "vinko", "filipa"]
+# completion = ["josipa", "filipa", "marina", "nikola"]
 print(solution(participant, completion))
 # 무조건 한명은 완주를 못했다는 명제를 잘 활용해야함
