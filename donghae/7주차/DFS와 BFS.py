@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open("input.txt","r")   #입력 예시 담긴 input.txt 가져오기
-
 from collections import deque
 
 n, m, v = map(int, input().split())

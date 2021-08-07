@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open("input.txt","r")   #입력 예시 담긴 input.txt 가져오기
-
 n = int(input())
 graph = [[0] * (n + 1) for _ in range(n + 1)] #인접 행렬 생성
 

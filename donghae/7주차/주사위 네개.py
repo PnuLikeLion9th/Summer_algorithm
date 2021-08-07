@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open("input.txt","r")   #입력 예시 담긴 input.txt 가져오기
-
 n = int(input())    #참여하는 사람 수 
 
 def money():    #금액을 반환하는 함수 만들기
